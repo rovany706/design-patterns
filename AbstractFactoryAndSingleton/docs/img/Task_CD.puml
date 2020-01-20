@@ -1,0 +1,85 @@
+@startuml
+package "AbstractFactory" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class MobileApplication {
+        +button: Button
+        +menu: Menu
+        +scroll: Scroll
+    }
+
+    interface Button {
+        +click(): void
+    }
+
+    interface Menu {
+        +choose(): void
+    }
+
+    interface Scrollbar {
+        +scroll() : void
+    }
+
+    class iOSButton {
+
+    }
+
+    class iOSMenu {
+        
+    }
+
+    class iOSScrollbar {
+        
+    }
+
+    class AndroidButton {
+
+    }
+
+    class AndroidMenu {
+        
+    }
+
+    class AndroidScrollbar {
+        
+    }
+
+    interface GuiFactory {
+        +createButton() : Button
+        +createMenu() : Menu
+        +createScroll() : Scrollbar
+    }
+
+    class iOSFactory {
+    }
+
+    class AndroidFactory {
+    }
+
+    Button <|-- iOSButton
+    Button <|-- AndroidButton
+    Menu <|-- iOSMenu
+    Menu <|-- AndroidMenu
+    Scroll <|-- iOSScrollbar
+    Scroll <|-- AndroidScrollbar
+
+    GuiFactory <|-- iOSFactory
+    GuiFactory <|-- AndroidFactory
+
+    iOSFactory ..> iOSButton
+    iOSFactory ..> iOSMenu
+    iOSFactory ..> iOSScroll
+    AndroidFactory ..> AndroidButton
+    AndroidFactory ..> AndroidMenu
+    AndroidFactory ..> AndroidScrollbar
+
+    MobileApplication --> GuiFactory
+    MobileApplication --> Button
+    MobileApplication --> Menu
+    MobileApplication --> Scrollbar
+} 
+@enduml

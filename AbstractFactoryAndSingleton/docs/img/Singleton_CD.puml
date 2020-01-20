@@ -1,0 +1,21 @@
+@startuml
+package "SingletonExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Client {
+
+    }
+
+    class Singleton {
+        -instance: Singleton
+        +getInstance(): Singleton
+    }
+
+    Client --> Singleton
+    Singleton -up-> Singleton
+} 
+@enduml

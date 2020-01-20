@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AbstractFactoryAndSingleton.iml" filepath="$PROJECT_DIR$/AbstractFactoryAndSingleton.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AbstractFactoryAndSingleton.iml" filepath="$PROJECT_DIR$/.idea/AbstractFactoryAndSingleton.iml" />
     </modules>
   </component>
 </project>

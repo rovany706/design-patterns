@@ -1,0 +1,34 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    activate Client
+    activate AbstractFactory
+    Client -> AbstractFactory: createFactory1
+    AbstractFactory -> ConcreteFactory1: new
+    activate ConcreteFactory1
+    AbstractFactory --> Client: return factory1
+
+    Client -> ConcreteFactory1: createProductA()
+    ConcreteFactory1 -> ProductA1: new
+    activate ProductA1
+    deactivate ConcreteFactory1
+    deactivate ProductA1
+
+    Client -> AbstractFactory: createFactory2
+    AbstractFactory -> ConcreteFactory2: new
+    activate ConcreteFactory2
+    AbstractFactory --> Client: return factory2
+    deactivate AbstractFactory
+
+    Client -> ConcreteFactory2: createProductA()
+    deactivate Client
+    ConcreteFactory2 -> ProductA2: new
+    activate ProductA2
+    deactivate ConcreteFactory2
+    deactivate ProductA2
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    activate Client
+    activate Singleton
+    Client -> Singleton: getInstance()
+    Singleton -> Instance: new
+    activate Instance
+    Singleton --> Client: return instance
+    
+    deactivate Client
+    deactivate Singleton
+    deactivate Instance
+
+@enduml
