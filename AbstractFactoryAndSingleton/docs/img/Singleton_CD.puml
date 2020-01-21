@@ -16,6 +16,5 @@ package "SingletonExample" {
     }
 
     Client --> Singleton
-    Singleton -up-> Singleton
 } 
 @enduml
