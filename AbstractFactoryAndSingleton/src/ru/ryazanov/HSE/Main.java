@@ -12,12 +12,10 @@ import ru.ryazanov.HSE.GUI.iOS.iOSFactory;
 public class Main {
 
     public static void main(String[] args) {
-        Facility.getInstance().setGuiFactory(new AndroidFactory());
-        MobileApplication androidApp = new MobileApplication(Facility.getInstance().getGuiFactory());
+        MobileApplication androidApp = new MobileApplication(new AndroidFactory());
         interact(androidApp);
 
-        Facility.getInstance().setGuiFactory(new iOSFactory());
-        MobileApplication iOSApp = new MobileApplication(Facility.getInstance().getGuiFactory());
+        MobileApplication iOSApp = new MobileApplication(new iOSFactory());
         interact(iOSApp);
     }
 
