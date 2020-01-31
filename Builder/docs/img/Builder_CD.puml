@@ -1,0 +1,47 @@
+@startuml
+package "BuilderExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Director {
+        -builder: Builder
+
+        +Construct(): void
+    }
+
+    interface Builder {
+        +BuildStepA(): void
+        +BuildStepB(): void
+        +BuildStepC(): void
+    }
+
+    class ProductA {
+
+    }
+
+    class ProductB {
+        
+    }
+
+    class ConcreteBuilderA {
+        -prodcut: ProductA
+
+        +GetResult(): ProductA
+    }
+
+    class ConcreteBuilderB {
+        -prodcut: ProductB
+
+        +GetResult(): ProductB
+    }
+
+    Director o--> Builder
+    ConcreteBuilderA ..|> Builder
+    ConcreteBuilderB ..|> Builder
+    ConcreteBuilderA --> ProductA
+    ConcreteBuilderB --> ProductB
+} 
+@enduml

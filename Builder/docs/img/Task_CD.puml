@@ -1,0 +1,65 @@
+@startuml
+package "DocumentBuilder" {
+    skinparam class {
+        BackgroundColor White
+        ArrowColor Black
+        BorderColor Black
+    }
+
+    class Director {
+        -builder: Builder
+
+        +Construct(): void
+    }
+
+    interface Builder {
+        +AddText(): void
+        +AddDiagram(): void
+        +AddChart(): void
+        +AddImage(): void
+    }
+
+    class Document {
+        +Elements: Object[]
+    }
+
+    class Text {
+        +Text: string
+    }
+
+    class Diagram {
+        +Diagram: string
+    }
+
+    class Chart {
+        +Chart: string
+    }
+
+    class Image {
+        +Image: string
+    }
+
+    class ReportBuilder {
+        -document: Document
+
+        +GetResult(): Document
+    }
+
+    class ThesisBuilder {
+        -document: Document
+
+        +GetResult(): Document
+    }
+
+    Director o--> Builder
+    ReportBuilder --|> Builder
+    ThesisBuilder --|> Builder
+    ReportBuilder --> Document
+    ThesisBuilder --> Document
+    Document "1" *--> "*" Text
+    Document "1" *--> "*" Diagram
+    Document "1" *--> "*" Chart
+    Document "1" *--> "*" Image
+}
+
+@enduml

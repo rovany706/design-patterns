@@ -1,0 +1,37 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    
+    activate Client
+
+    Client -> Director: new Director()
+    activate Director
+    deactivate Director
+
+    Client -> ConcreteBuilder: new ConcreteBuilder()
+    activate ConcreteBuilder
+    deactivate ConcreteBuilder
+    
+    Client -> Director: Build()
+    activate Director
+    Director -> ConcreteBuilder: BuildStepA()
+    activate ConcreteBuilder
+    deactivate ConcreteBuilder
+    Director -> ConcreteBuilder: BuildStepB()
+    activate ConcreteBuilder
+    deactivate ConcreteBuilder
+    Director -> ConcreteBuilder: BuildStepC()
+    activate ConcreteBuilder
+    deactivate ConcreteBuilder
+    deactivate Director
+    
+    Client -> ConcreteBuilder: GetResult()
+    activate ConcreteBuilder
+    ConcreteBuilder --> Client: return result
+    deactivate ConcreteBuilder
+    deactivate Director
+    deactivate Client
+@enduml
