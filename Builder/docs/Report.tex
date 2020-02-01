@@ -36,13 +36,13 @@
 
 \begin{figure}[p]
   \centering
-  \includegraphics[scale=0.6]{Builder_CD.eps}
+  \includegraphics[scale=0.7]{Builder_CD.eps}
   \caption{Диаграмма классов паттерна <<Строитель>>}
 \end{figure}
 
 \begin{figure}[p]
   \centering
-  \includegraphics[scale=0.6]{Builder_SD.eps}
+  \includegraphics[scale=0.75]{Builder_SD.eps}
   \caption{Диаграмма последовательности паттерна <<Строитель>>}
 \end{figure}
 \clearpage
@@ -101,13 +101,13 @@
 \textbf{Участники.}
 \begin{itemize}
   \item Builder - абстрактный строитель: объявляет интерфейс для операций, создающих части продукта;
-  \item ThesisBuilder, ReportBuilder) - конкретные строители: реализуют операции, создающие разные типы документов (Курсовая или отчет);
+  \item ThesisBuilder, ReportBuilder - конкретные строители: реализуют операции, создающие разные типы документов (Курсовая или отчет);
   \item Document - продукт: документ, создаваемый соответствующим строителем;
   \item Director - распорядитель (директор): пошагово конструирует продукт, используя методы строителя;
   \item Text - текст;
   \item Diagram - диаграмма;
   \item Chart - график;
-  \item Image - изображение;
+  \item Image - изображение.
 \end{itemize}
 
 \section{Реализация}
