@@ -2,17 +2,21 @@
 # Паттерн "Абстрактная фабрика"
 Абстрактная фабрика — это порождающий паттерн проектирования, который позволяет создавать семейства связанных объектов, не привязываясь к конкретным классам создаваемых объектов.
 
-![Class diagram](docs/img/AF_CD.svg)
 *Диаграмма классов*
 
-![Sequence diagram](docs/img/AF_SD.svg)
+![Class diagram](docs/img/AF_CD.svg)
+
 *Диаграмма последовательности*
+
+![Sequence diagram](docs/img/AF_SD.svg)
 
 # Паттерн "Одиночка"
 Одиночка — это порождающий паттерн проектирования, который гарантирует, что у класса есть только один экземпляр, и предоставляет к нему глобальную точку доступа.
 
-![Class diagram](docs/img/Singleton_CD.svg)
 *Диаграмма классов*
 
-![Sequence diagram](docs/img/Singleton_SD.svg)
+![Class diagram](docs/img/Singleton_CD.svg)
+
 *Диаграмма последовательности*
+
+![Sequence diagram](docs/img/Singleton_SD.svg)
