@@ -4,7 +4,9 @@ package "DocumentBuilder" {
         BackgroundColor White
         ArrowColor Black
         BorderColor Black
+        linetype polyline
     }
+    skinparam linetype ortho
 
     class Director {
         -builder: Builder
@@ -13,30 +15,32 @@ package "DocumentBuilder" {
     }
 
     interface Builder {
-        +AddText(): void
-        +AddDiagram(): void
-        +AddChart(): void
-        +AddImage(): void
+        +AddTitle(): void
+        +AddIntroduction(): void
+        +AddMainPart(): void
+        +AddConclusion(): void
+    }
+
+    abstract class DocumentElement {
+        -Content: string
     }
 
     class Document {
-        +Elements: Object[]
+        +Elements: DocumentElement[]
+
+        +Add(DocumentElement): void
     }
 
     class Text {
-        +Text: string
     }
 
     class Diagram {
-        +Diagram: string
     }
 
     class Chart {
-        +Chart: string
     }
 
     class Image {
-        +Image: string
     }
 
     class ReportBuilder {
@@ -52,14 +56,18 @@ package "DocumentBuilder" {
     }
 
     Director o--> Builder
-    ReportBuilder --|> Builder
-    ThesisBuilder --|> Builder
+    Builder <|.down. ThesisBuilder
+    Builder <|.down. ReportBuilder
     ReportBuilder --> Document
     ThesisBuilder --> Document
     Document "1" *--> "*" Text
     Document "1" *--> "*" Diagram
     Document "1" *--> "*" Chart
     Document "1" *--> "*" Image
+    Text --|> DocumentElement
+    Diagram --|> DocumentElement
+    Chart --|> DocumentElement
+    Image --|> DocumentElement
 }
 
 @enduml
