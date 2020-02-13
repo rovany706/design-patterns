@@ -1,0 +1,34 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    
+    activate Client
+
+    Client -> CompositeA: Operation()
+    activate CompositeA
+
+    CompositeA -> CompositeB: Operation()
+    activate CompositeB
+    
+    CompositeB -> PrimitiveA: Operation()
+    activate PrimitiveA
+    PrimitiveA --> CompositeB: return
+    deactivate PrimitiveA
+    CompositeB -> PrimitiveB: Operation()
+    activate PrimitiveB
+    PrimitiveB --> CompositeB: return
+    deactivate PrimitiveB
+    CompositeB --> CompositeA: return
+    deactivate CompositeB
+
+    CompositeA -> PrimitiveC: Operation()
+    activate PrimitiveC
+    PrimitiveC --> CompositeA: return
+    deactivate PrimitiveC
+    CompositeA --> Client: return
+    deactivate CompositeA
+    deactivate Client
+@enduml

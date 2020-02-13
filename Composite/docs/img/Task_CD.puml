@@ -1,0 +1,56 @@
+@startuml
+package "SmartHome" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Client {
+
+    }
+
+    abstract class SmartHomeComponent {
+        -Enabled: boolean
+        +Name: string
+        +SetEnabled()
+    }
+
+    class SmartFloor {
+
+    }
+
+    class SmartTV {
+
+    }
+    
+    class SmartCurtains {
+
+    }
+
+    class SmartLight {
+
+    }
+    
+
+    class SmartHomeScenario {
+        -Children: SmartHomeComponent[]
+        +Add()
+        +Remove()
+    }
+
+    Client --> SmartHomeComponent
+    SmartHomeScenario --|> SmartHomeComponent
+
+    SmartFloor -up-|> SmartHomeComponent
+    SmartTV -up-|> SmartHomeComponent
+    SmartCurtains -up-|> SmartHomeComponent
+    SmartLight -up-|> SmartHomeComponent
+
+    SmartFloor "1" -- "*" SmartHomeScenario
+    SmartTV "1" -- "*" SmartHomeScenario
+    SmartCurtains "1" -- "*" SmartHomeScenario
+    SmartLight "1" -- "*" SmartHomeScenario
+  
+} 
+@enduml

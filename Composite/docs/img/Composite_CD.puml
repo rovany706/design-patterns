@@ -1,0 +1,34 @@
+@startuml
+package "CompositeExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Client {
+
+    }
+
+    interface Component {
+        +Operation()
+    }
+
+    class Primitive {
+        ...
+        +Operation()
+
+    }
+
+    class Composite {
+        -Children: Component[]
+        +Operation()
+        +Add()
+        +Remove()
+    }
+
+    Client --> Component
+    Primitive .up.|> Component
+    Composite .up.|> Component
+} 
+@enduml
