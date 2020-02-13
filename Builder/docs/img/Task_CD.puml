@@ -61,8 +61,10 @@ package "DocumentBuilder" {
     ReportBuilder --> Document
     ThesisBuilder --> Document
     Document "1" *--> "*" Text
-    Document "1" *--> "*" Diagram
-    Document "1" *--> "*" Chart
+    ' bugfix: Document "1" *--> "*" Diagram
+    Document "*" *--> "1" Diagram
+    ' bugfix: Document "1" *--> "*" Chart
+    Document "*" *--> "1" Chart
     Document "1" *--> "*" Image
     Text --|> DocumentElement
     Diagram --|> DocumentElement
