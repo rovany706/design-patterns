@@ -5,6 +5,7 @@ package "SmartHome" {
 	ArrowColor Black
 	BorderColor Black
     }
+    skinparam Linetype ortho
 
     class Client {
 
@@ -31,12 +32,19 @@ package "SmartHome" {
     class SmartLight {
 
     }
-    
 
-    class SmartHomeScenario {
+    class SmartGroup {
         -Children: SmartHomeComponent[]
         +Add()
         +Remove()
+    }
+    
+
+    class SmartHomeScenario {
+        +Floors: SmartGroup
+        +Lights: SmartGroup
+        +Curtains: SmartGroup
+        +TV: SmartTV
     }
 
     Client --> SmartHomeComponent
@@ -47,10 +55,13 @@ package "SmartHome" {
     SmartCurtains -up-|> SmartHomeComponent
     SmartLight -up-|> SmartHomeComponent
 
-    SmartFloor "1" -- "*" SmartHomeScenario
-    SmartTV "1" -- "*" SmartHomeScenario
-    SmartCurtains "1" -- "*" SmartHomeScenario
-    SmartLight "1" -- "*" SmartHomeScenario
+    SmartFloor "1" -- "*" SmartGroup
+    SmartTV "1" -- "*" SmartGroup
+    SmartCurtains "1" -- "*" SmartGroup
+    SmartLight "1" -- "*" SmartGroup
+
+    SmartGroup --|> SmartHomeComponent
+    SmartGroup --> SmartHomeScenario
   
 } 
 @enduml
