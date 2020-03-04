@@ -1,0 +1,21 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    
+    activate Client
+    Client -> Proxy: Action()
+    activate Proxy
+    
+    Proxy -> RealSubject: Action()
+    activate RealSubject
+    
+    RealSubject --> Proxy: return
+    deactivate RealSubject
+    Proxy --> Client: return
+
+    deactivate Proxy
+    deactivate Client
+@enduml

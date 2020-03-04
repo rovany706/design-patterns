@@ -1,0 +1,31 @@
+@startuml
+package "ProxyExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Client {
+    }
+
+    interface Subject {
+        +Action()
+    }
+
+    class Proxy {
+        -Subject: RealSubject
+        +Action()
+    }
+
+    class RealSubject {
+        +Action()
+    }
+
+    Client -right-> Subject
+    RealSubject .up.|> Subject
+    Proxy .up.|> Subject
+    Proxy o-right-> RealSubject
+
+} 
+@enduml

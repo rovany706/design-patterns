@@ -1,0 +1,31 @@
+@startuml
+package "SubscriptionService" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+
+    class Client {
+    }
+
+    interface Service {
+        +Subscribe(): void
+    }
+
+    class ServiceProxy {
+        -Service: Service
+        +Subscribe(): void
+    }
+
+    class MusicService {
+        +Subscribe()
+    }
+
+    Client -right-> Service
+    MusicService .up.|> Service
+    ServiceProxy .up.|> Service
+    ServiceProxy o-right-> MusicService
+
+} 
+@enduml
