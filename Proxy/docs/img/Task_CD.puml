@@ -6,23 +6,26 @@ package "SubscriptionService" {
 	BorderColor Black
     }
 
-    class Client {
+    class Customer {
+        -name: string
+        -money: int
     }
 
     interface Service {
-        +Subscribe(): void
+        +Subscribe(Customer): void
     }
 
     class ServiceProxy {
         -Service: Service
-        +Subscribe(): void
+        +Subscribe(Customer): void
     }
 
     class MusicService {
-        +Subscribe()
+        -customers: Customer[]
+        +Subscribe(Customer)
     }
 
-    Client -right-> Service
+    Customer -right-> Service
     MusicService .up.|> Service
     ServiceProxy .up.|> Service
     ServiceProxy o-right-> MusicService
