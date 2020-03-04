@@ -1,7 +1,5 @@
 package com.Proxy;
 
-import java.util.ArrayList;
-
 public class ServiceProxy implements Service {
     private Service service;
 
@@ -12,6 +10,7 @@ public class ServiceProxy implements Service {
     }
 
     @Override
+    // Method checks if a customer has enough money for subscription
     public void Subscribe(Customer customer) throws Exception {
         if (customer.getMoney() >= SUBSCRIPTION_COST) {
             service.Subscribe(customer);
