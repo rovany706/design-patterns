@@ -1,0 +1,29 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    
+    activate Client
+    Client -> Context: new Context()
+    activate Context
+    
+    Client -> Expression: new Expression()
+    activate Expression
+    
+    Expression -> NonTerminalExpression: Interpret(Context)
+    activate NonTerminalExpression
+    NonTerminalExpression -> TerminalExpression: Interpret(Context)
+    activate TerminalExpression
+    NonTerminalExpression -> TerminalExpression: Interpret(Context)
+    Expression -> TerminalExpression: Interpret(Context)
+
+    deactivate Context
+    deactivate TerminalExpression
+    deactivate NonTerminalExpression
+
+    Expression --> Client: return
+    deactivate Expression
+    deactivate Client
+@enduml

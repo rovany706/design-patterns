@@ -1,0 +1,67 @@
+@startuml
+package "BrainfuckInterpreter" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    ' skinparam linetype ortho
+
+    class Client {
+
+    }
+
+    class Context {
+        ptr: int
+        Memory: char[]
+        Code: string
+        CodeIndex: int
+    }
+
+    interface IExpression {
+        +Interpret(Context): void
+    }
+
+    class IncrementExpression {
+        +Interpret(Context): void
+    }
+
+    class DecrementExpression {
+        +Interpret(Context): void
+    }
+
+    class IncrementPointerExpression {
+        +Interpret(Context): void
+    }
+
+    class DecrementPointerExpression {
+        +Interpret(Context): void
+    }
+
+    class PrintExpression {
+        +Interpret(Context): void
+    }
+
+    class ReadExpression {
+        +Interpret(Context): void
+    }
+
+    class CodeExpression {
+        +Interpret(Context): void
+    }
+
+    Client -left-> Context
+    Client -right-> IExpression
+    
+    IncrementExpression -up-|> IExpression
+    DecrementExpression -up-|> IExpression
+    IncrementPointerExpression -up-|> IExpression
+
+    DecrementPointerExpression -down-|> IExpression
+    PrintExpression -down-|> IExpression
+    ReadExpression -down-|> IExpression
+
+    CodeExpression -left-|> IExpression
+    CodeExpression o-left-> IExpression
+} 
+@enduml

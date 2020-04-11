@@ -1,0 +1,39 @@
+@startuml
+package "InterpreterExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    skinparam linetype ortho
+
+    class Client {
+
+    }
+
+    class Context {
+
+    }
+
+    abstract class AbstractExpression {
+        +Interpret(Context): void
+    }
+
+    class TerminalExpression {
+        +Interpret(Context): void
+    }
+
+    class NonTerminalExpression {
+        -Expression1: AbstractExpression
+        -Expression2: AbstractExpression
+
+        +Interpret(Context): void
+    }
+
+    Client -down-> Context
+    Client -right-> AbstractExpression
+    TerminalExpression -up-|> AbstractExpression
+    NonTerminalExpression -left-|> AbstractExpression
+    NonTerminalExpression o-left-> AbstractExpression
+} 
+@enduml
