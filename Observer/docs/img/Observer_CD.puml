@@ -1,0 +1,35 @@
+@startuml
+package "ObserverExample" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    skinparam linetype ortho
+
+    interface IObservable {
+        +Subscribe(IObserver): void
+        +Unsubscribe(IObserver): void
+        +Notify(): void
+    }
+
+    interface IObserver {
+        +Update()
+    }
+
+    class ConcreteObserver {
+        +Update()
+    }
+
+    class ConcreteObservable {
+        -subscribers: IObserver[]
+        +Subscribe(IObserver): void
+        +Unsubscribe(IObserver): void
+        +Notify(): void
+    }
+
+    ConcreteObservable .up.|> IObservable
+    ConcreteObservable o-right-> IObserver
+    ConcreteObserver .down.|> IObserver
+} 
+@enduml

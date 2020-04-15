@@ -1,0 +1,45 @@
+@startuml
+package "ObservableStudentJournals" {
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }
+    skinparam linetype ortho
+
+    interface IObservable {
+        +Subscribe(IObserver): void
+        +Unsubscribe(IObserver): void
+        +Notify(): void
+    }
+
+    interface IObserver {
+        +Update(IObservable sender)
+    }
+
+    class Student {
+        +StudentId
+        +Name
+        +Update(IObservable sender)
+    }
+
+    abstract class Journal {
+        +Name
+        -subscribers: IObserver[]
+        -journal: Dictionary<StudentId, score>
+        +GetScore(studentId)
+    }
+
+    class MathJournal {
+    }
+
+    class LiteratureJournal {
+    }
+
+    Journal .up.|> IObservable
+    MathJournal .up.|> Journal
+    LiteratureJournal .up.|> Journal
+    Journal o-right-> IObserver
+    Student .down.|> IObserver
+} 
+@enduml

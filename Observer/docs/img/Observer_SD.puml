@@ -1,0 +1,43 @@
+@startuml
+    skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+    }    
+    skinparam sequenceMessageAlign center
+
+    ConcreteObservable <- ConcreteObserverA: Subscribe()
+    activate ConcreteObservable
+    activate ConcreteObserverA
+    deactivate ConcreteObservable
+    deactivate ConcreteObserverA
+
+    ConcreteObservable <- ConcreteObserverB: Subscribe()
+    activate ConcreteObservable
+    activate ConcreteObserverB
+    deactivate ConcreteObservable
+    deactivate ConcreteObserverB
+
+    [-> ConcreteObservable: SetState()
+    activate ConcreteObservable
+    ConcreteObservable -> ConcreteObservable: Notify()
+    activate ConcreteObservable
+
+    ConcreteObservable -> ConcreteObserverA: Update()
+    activate ConcreteObserverA
+    ConcreteObserverA -> ConcreteObservable: GetState()
+    activate ConcreteObservable
+    ConcreteObservable --> ConcreteObserverA: return state 
+    deactivate ConcreteObservable
+    deactivate ConcreteObserverA
+
+    ConcreteObservable -> ConcreteObserverB: Update()
+    activate ConcreteObserverB
+    ConcreteObserverB -> ConcreteObservable: GetState()
+    activate ConcreteObservable
+    ConcreteObservable --> ConcreteObserverB: return state 
+    deactivate ConcreteObservable
+    deactivate ConcreteObserverB
+
+    deactivate ConcreteObservable
+@enduml
