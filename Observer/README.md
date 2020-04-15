@@ -8,4 +8,4 @@
 
 *Диаграмма последовательности*
 
-![Sequence diagram](docs/img/Observer_SD.svg)
+![Sequence diagram](docs/img/Observer_SD.svg) 
